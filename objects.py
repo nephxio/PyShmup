@@ -1,14 +1,27 @@
 import pygame
 import pygame.display
+import os
 import random
 
 pygame.init()
+
+PLAYER_SHIP_IMAGE = pygame.image.load(os.path.join('Assets', 'Ships', 'Player', 'player.png'))
+PLAYER_SHIP = pygame.transform.scale(PLAYER_SHIP_IMAGE, (round(PLAYER_SHIP_IMAGE.get_width()*.5),round(PLAYER_SHIP_IMAGE.get_height()*.5)))
 
 STARFIELD_SATURATION_MIN = 40
 STARFIELD_SATURATION_MAX = 60
 
 STAR_SIZE_MIN = 1
 STAR_SIZE_MAX = 3
+
+class Player:
+
+    def __init__(self, image, coord_x, coord_y, img_scale, hp):
+        self.ship_image = image
+        self.position_x = coord_x
+        self.position_y = coord_y
+        self.scale = img_scale
+        self.hitpoints = hp
 
 class Background_Star:
 
@@ -27,12 +40,15 @@ class Window:
         self.WIN = pygame.display.set_mode((self.width, self.height))
         self.entity_list = { 'background': background_art, 'background_objects': [], 'enemy': [], 'boss': None, 'projectiles': [], 'player': None, 'ui_elements': [] }
 
+        self.entity_list['player'] = Player(PLAYER_SHIP, 50, (self.height / 2) - (PLAYER_SHIP.get_height()/2), 1, 100)
+
         for i in range(random.randint(STARFIELD_SATURATION_MIN, STARFIELD_SATURATION_MAX)):
             self.entity_list['background_objects'].append(Background_Star(random.randint(1, 3), random.randint(STAR_SIZE_MIN, STAR_SIZE_MAX), 3, random.randint(0, self.width), random.randint(0, self.height)))
 
     def draw_window(self):
         self.WIN.fill((self.entity_list['background']))
         self.draw_stars(self.entity_list['background_objects'])
+        self.WIN.blit(self.entity_list['player'].ship_image, (self.entity_list['player'].position_x, self.entity_list['player'].position_y))
         pygame.display.update()
         self.remove_old_stars()
 

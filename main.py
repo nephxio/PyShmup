@@ -1,18 +1,17 @@
 import pygame
-import window
-import threading
+import objects
 
 WIDTH, HEIGHT = int(pygame.display.Info().current_w*.75), int(pygame.display.Info().current_h*.75)
 FPS = 60
 
-SPAWN_STAR_EVENT, t = pygame.USEREVENT+1, 250
+SPAWN_STAR_EVENT, tick_interval_ms = pygame.USEREVENT+1, 250
 
 def main():
 
     run = True
     clock = pygame.time.Clock()
-    game_window = window.Window(WIDTH,HEIGHT,(0,0,0))
-    pygame.time.set_timer(SPAWN_STAR_EVENT, t)
+    game_window = objects.Window(WIDTH, HEIGHT, (0, 0, 0))
+    pygame.time.set_timer(SPAWN_STAR_EVENT, tick_interval_ms)
 
     while run:
         clock.tick(FPS)
