@@ -25,7 +25,7 @@ class Settings:
     bg_star_saturation_max = 60
     bg_star_size_min = 1
     bg_star_size_max = 3
-    bg_star_vel_modifier = 2
+    bg_star_vel_modifier = 1.25
 
     # Player Settings
     player_ship_image = pygame.image.load(os.path.join(ship_assets, 'player', 'player.png'))
@@ -49,3 +49,4 @@ class Settings:
             cls.enemy_sprite_list.append(pygame.transform.scale(temp_sprite, (round(temp_sprite.get_width()*.5),
                                                                               round(temp_sprite.get_height()*.5))))
 
+        print("Done loading enemy sprites")

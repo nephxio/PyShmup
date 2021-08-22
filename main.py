@@ -19,12 +19,13 @@ def main():
         clock.tick(objects.Settings.FPS)
         for event in pygame.event.get():
             if event.type == SPAWN_BACKGROUND_STAR_EVENT:
-                game_state.add_new_objects('background_objects', 'background_stars')
+                game_state.add_new_objects(None, 'background_objects', 'background_stars')
 
             if event.type == pygame.QUIT:
                 run = False
-
-        game_state.entity_list['player'].handle_movement(pygame.key.get_pressed())
+        if len(game_state.entity_list['player']) >= 0:
+            for player in game_state.entity_list['player']:
+                player.handle_movement(pygame.key.get_pressed())
         game_window.draw_window(game_state)
     pygame.quit()
 
