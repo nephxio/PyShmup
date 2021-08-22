@@ -10,7 +10,7 @@ def main():
     run = True
     clock = pygame.time.Clock()
     game_window = objects.Window(Settings.screen_width, Settings.screen_height)
-    game_data = objects.GameData()
+    Settings.load_enemy_sprites()
     game_state = objects.GameState(Settings.screen_background_color)
 
     pygame.time.set_timer(SPAWN_BACKGROUND_STAR_EVENT, tick_interval_ms)
@@ -19,7 +19,7 @@ def main():
         clock.tick(objects.Settings.FPS)
         for event in pygame.event.get():
             if event.type == SPAWN_BACKGROUND_STAR_EVENT:
-                game_state.add_new_background_objects('background_objects','background star')
+                game_state.add_new_objects('background_objects', 'background_stars')
 
             if event.type == pygame.QUIT:
                 run = False

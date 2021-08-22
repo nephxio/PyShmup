@@ -98,13 +98,13 @@ class GameState:
                                                                          random.randint(0, Settings.screen_height),
                                                                          3,
                                                                          random.randint(1, 3),
-                                                                         'background star',
+                                                                         'background_stars',
                                                                          random.randint(Settings.bg_star_size_min,
                                                                                         Settings.bg_star_size_max),
                                                                          Settings.bg_star_color))
 
-    def add_new_background_objects(self, object_type: str, object_tag: str):
-        if object_type == 'background_objects':
+    def add_new_objects(self, object_type: str, object_tag: str):
+        if object_tag == 'background_stars':
             for _ in range(random.randint(1, 4)):
                 layer = random.randint(1, 3)
                 self.entity_list['background_objects'].append(

@@ -39,11 +39,13 @@ class Settings:
     player_velocity = 6
     player_hp = 100
 
+    # Enemy Game Data
+    enemy_sprite_list = []
+
     @classmethod
     def load_enemy_sprites(cls):
-        enemy_sprite_list = []
         for file in os.scandir(cls.enemy_ship_assets):
             temp_sprite = pygame.image.load(os.path.join(cls.enemy_ship_assets, file.name))
-            enemy_sprite_list.append(pygame.transform.scale(temp_sprite, (round(temp_sprite.get_width()*.5),
+            cls.enemy_sprite_list.append(pygame.transform.scale(temp_sprite, (round(temp_sprite.get_width()*.5),
                                                                               round(temp_sprite.get_height()*.5))))
-        return enemy_sprite_list
+
