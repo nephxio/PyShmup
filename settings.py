@@ -1,0 +1,40 @@
+import os
+import pygame
+import pygame.image
+import pathlib
+from pathlib import Path
+
+pygame.init()
+
+class Settings:
+
+    # Window Settings
+    screen_width, screen_height = int(pygame.display.Info().current_w*.75), \
+                                            int(pygame.display.Info().current_h*.75)
+    FPS = 60
+    screen_background_color = (0, 0, 0)
+
+    # Directories
+    asset_directory = Path(pathlib.PurePath(Path.cwd(), "assets"))
+    ship_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "ships"))
+
+    # Background Object Settings
+    bg_star_color = (255, 255, 255)
+    bg_star_saturation_min = 40
+    bg_star_saturation_max = 60
+    bg_star_size_min = 1
+    bg_star_size_max = 3
+    bg_star_vel_modifier = 2
+
+    # Player Settings
+    player_ship_image = pygame.image.load(os.path.join(ship_assets, 'player', 'player.png'))
+    player_ship_sprite = pygame.transform.scale(player_ship_image,
+                                                     (round(player_ship_image.get_width()*.5),
+                                                      round(player_ship_image.get_height()*.5)))
+    player_sprite_width = player_ship_sprite.get_width()
+    player_sprite_height = player_ship_sprite.get_height()
+    player_ship_initial_x = 50
+    player_ship_initial_y = (screen_height / 2) - (player_ship_sprite.get_height() / 2)
+    player_velocity = 6
+    player_hp = 100
+
