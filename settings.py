@@ -17,6 +17,7 @@ class Settings:
     # Directories
     asset_directory = Path(pathlib.PurePath(Path.cwd(), "assets"))
     ship_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "ships"))
+    enemy_ship_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "ships", "enemies"))
 
     # Background Object Settings
     bg_star_color = (255, 255, 255)
@@ -38,3 +39,11 @@ class Settings:
     player_velocity = 6
     player_hp = 100
 
+    @classmethod
+    def load_enemy_sprites(cls):
+        enemy_sprite_list = []
+        for file in os.scandir(cls.enemy_ship_assets):
+            temp_sprite = pygame.image.load(os.path.join(cls.enemy_ship_assets, file.name))
+            enemy_sprite_list.append(pygame.transform.scale(temp_sprite, (round(temp_sprite.get_width()*.5),
+                                                                              round(temp_sprite.get_height()*.5))))
+        return enemy_sprite_list
