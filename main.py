@@ -11,6 +11,7 @@ def main():
     clock = pygame.time.Clock()
     game_window = objects.Window(Settings.screen_width, Settings.screen_height)
     Settings.load_enemy_sprites()
+    Settings.load_boss_sprites()
     game_state = objects.GameState(Settings.screen_background_color)
 
     pygame.time.set_timer(SPAWN_BACKGROUND_STAR_EVENT, tick_interval_ms)
