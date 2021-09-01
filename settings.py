@@ -19,6 +19,7 @@ class Settings:
     ship_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "ships"))
     enemy_ship_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "ships", "enemies"))
     boss_ship_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "ships", "boss"))
+    weapon_sprite_assets = Path(pathlib.PurePath(Path.cwd(), "assets", "weapons", "M484BulletCollection1.png"))
 
     # Background Object Settings
     bg_star_color = (255, 255, 255)
@@ -40,9 +41,10 @@ class Settings:
     player_velocity = 6
     player_hp = 100
 
-    # Enemy Game Data
+    # Sprite Game Data
     enemy_sprite_list = []
     boss_sprite_list = []
+
 
     @classmethod
     def load_enemy_sprites(cls):
