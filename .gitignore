@@ -149,6 +149,9 @@ Training
 Blog
 About
 
+# Pycharm IDE folder
+.idea/
+
 # Project Folders
 data/cache/
 data/logs/
