@@ -25,10 +25,11 @@ class Window:
         self.draw_layer(game_state.entity_list['player'])
         self.draw_layer(game_state.entity_list['ui_elements'])
         weapon_rect = (0, 0, 60, 90)
-        weapon_img = self.sheet.load_strip(weapon_rect, 1)
+        weapon_img = self.sheet.load_strip(weapon_rect, 4)
+        self.WIN.blit(weapon_img[0], 50, 500)
 
-        for x, bullet in enumerate(weapon_img):
-            self.WIN.blit(bullet, (x*50 + 500, 500))
+        # for x, bullet in enumerate(weapon_img):
+        #     self.WIN.blit(bullet, (x*50 + 500, 500))
 
     def draw_layer(self, obj_list: list):
         for obj in obj_list:
